@@ -1,10 +1,12 @@
-export { About } from './About'
-export { Education } from './Education'
-export { Experience } from './Experience'
-export { Footer } from './Footer'
-export { Header } from './Header'
-export { Home } from './Home'
-export { Services } from './Services'
-export { Recommendations as Review } from './Recommendations'
-export { Tools } from './Tools'
-export { Contact } from './Contact'
+export { About } from './About';
+export { Education } from './Education';
+export { Experience } from './Experience';
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Home } from './Home';
+export { Services } from './Services';
+export { Recommendations as Review } from './Recommendations';
+export { Tools } from './Tools';
+export { default as Contact } from './Contact';
+export { default as Skills } from './Skills';
+export { default as Projects } from './Projects';

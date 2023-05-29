@@ -1,12 +1,10 @@
-import React from 'react'
-import { Section } from '../components'
-import { Row, Col } from 'react-bootstrap'
-import Slider from 'react-slick'
+import React from 'react';
+import { Section } from '../components';
+import { Row, Col } from 'react-bootstrap';
+import Slider from 'react-slick';
 // import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
-import RecommendationConfig from '../data/recommendations.json'
-
-const recommendations = RecommendationConfig.recommendations
+import recommendations from '../data/recommendations';
 
 export class Recommendations extends React.Component {
   render() {
@@ -17,15 +15,15 @@ export class Recommendations extends React.Component {
       autoplaySpeed: 3000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      pauseOnHover: true
-    }
+      pauseOnHover: true,
+    };
 
-    return(
+    return (
       <Section id="recommendations" title="Recommendations">
         <Row>
           <Col md={{ span: 8, offset: 2 }}>
             <Slider {...options}>
-              { recommendations.map(r => (
+              {recommendations.map(r => (
                 <div className="slick-slide" key={r.name}>
                   <div className="text-center">
                     <div className="mb-3">
@@ -34,9 +32,7 @@ export class Recommendations extends React.Component {
                     <h4 className="mt-3 mb-0">{r.name}</h4>
                     <span className="subtitle">{r.jobTitle}</span>
                     <div className="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4 mb-4 ms-4 me-4">
-                      <p className="mb-0">
-                        {r.recommendation}
-                      </p>
+                      <p className="mb-0">{r.recommendation}</p>
                     </div>
                   </div>
                 </div>
@@ -45,8 +41,8 @@ export class Recommendations extends React.Component {
           </Col>
         </Row>
       </Section>
-    )
+    );
   }
 }
 
-export default Recommendations
+export default Recommendations;

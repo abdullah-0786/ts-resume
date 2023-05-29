@@ -12,13 +12,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "typeRoots": [
-      "typings",
-      "node_modules/@types"
-    ]
+    "typeRoots": ["typings", "node_modules/@types"]
   },
-  "include": [
-    "src",
-    "typings/custom.d.ts"
-  ]
+  "include": ["src", "typings/custom.d.ts"]
 }

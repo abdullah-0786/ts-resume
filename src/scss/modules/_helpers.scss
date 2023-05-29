@@ -103,3 +103,13 @@
     color: $color-white;
   }
 }
+
+.bw-image {
+  filter: grayscale(100%); /* Convert image to black and white */
+  transition: filter 0.3s; /* Add transition effect for a smooth hover */
+}
+
+.bw-image:hover {
+  filter: none; /* Remove the grayscale effect on hover */
+  box-shadow: 0px 0px 140em #006b38 !important;
+}

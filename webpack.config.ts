@@ -1,23 +1,23 @@
-import path from "path"
-import webpack from "webpack"
-import HtmlWebpackPlugin from "html-webpack-plugin"
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
-import ESLintPlugin from "eslint-webpack-plugin"
-import { CleanWebpackPlugin } from "clean-webpack-plugin"
-import CopyPlugin from "copy-webpack-plugin"
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const config: webpack.Configuration = {
-  mode: "production",
-  entry: "./src/index.tsx",
+  mode: 'production',
+  entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "[name].[contenthash].js",
-    publicPath: "",
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].[contenthash].js',
+    publicPath: '',
   },
   performance: {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
-    hints: false
+    hints: false,
   },
   module: {
     rules: [
@@ -25,13 +25,9 @@ const config: webpack.Configuration = {
         test: /\.(ts|js)x?$/i,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
@@ -39,16 +35,16 @@ const config: webpack.Configuration = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               url: false,
             },
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
           },
         ],
       },
@@ -65,30 +61,39 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.svg/,
-        type: 'asset/inline'
+        type: 'asset/inline',
+      },
+      {
+        test: /\.(pdf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html"
+      template: 'src/index.html',
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
     }),
     new ESLintPlugin({
-      extensions: ["js", "jsx", "ts", "tsx"],
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
     }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
-      patterns: [
-        { from: "public" },
-      ],
+      patterns: [{ from: 'public' }],
     }),
   ],
-}
+};
 
 export default config;

@@ -1,7 +1,7 @@
 # React TypeScript Resume Web Template
 A lightweight React-TypeScript resume web template for all people.
 
-[LIVE DEMO](https://kiendang.com)
+<!-- [LIVE DEMO](https://kiendang.com) -->
 
 ## Do you want to use it on your own?
 

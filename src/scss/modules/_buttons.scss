@@ -44,7 +44,9 @@
   position: relative;
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-
+  margin-right: .5%;
+  margin-left: .5%;
+  
   &:hover {
     color: $color-white;
     background: $color-primary;
