@@ -53,7 +53,21 @@ export class Home extends React.Component {
               {details.socialNetworks.map(network => (
                 <li className="list-inline-item" key={network.iconName}>
                   <a href={network.link} target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={fab[network.iconName]} />
+                    {network.iconName.startsWith('fa') ? (
+                      <FontAwesomeIcon icon={fab[network.iconName]} />
+                    ) : (
+                      <img
+                        src={network.iconName}
+                        alt={network.name}
+                        style={{
+                          width: '20px',
+                          marginBottom: '0.25em',
+                          borderRadius: '15%',
+                          backgroundColor: 'white',
+                          padding: '2px',
+                        }}
+                      />
+                    )}
                   </a>
                 </li>
               ))}

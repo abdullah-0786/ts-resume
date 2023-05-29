@@ -1,7 +1,6 @@
 # React TypeScript Resume Web Template
-A lightweight React-TypeScript resume web template for all people.
 
-<!-- [LIVE DEMO](https://kiendang.com) -->
+A lightweight React-TypeScript resume web template for all people.
 
 ## Do you want to use it on your own?
 
@@ -53,6 +52,7 @@ serve -s build
 ```
 
 ## Dependencies
+
 - [fortawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
 - [node-sass](https://github.com/sass/node-sass)
 - [react-bootstrap](https://react-bootstrap.github.io/)

@@ -15,6 +15,11 @@ const details = {
       link: 'http://www.linkedin.com/in/syed-abdullah-faisal-647b59202',
       iconName: 'faLinkedin',
     },
+    {
+      name: 'Leetcode',
+      link: 'https://leetcode.com/user0338rJ/',
+      iconName: '/images/leetcode.svg',
+    },
   ],
 };
 

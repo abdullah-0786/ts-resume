@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeControlPhone } from '@fortawesome/free-solid-svg-icons';
 import { Section, Skill } from '../components';
 import about from '../data/about';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeControlPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Name = styled.div`
   font-weight: 500;
@@ -14,6 +14,27 @@ const Name = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+// function calculateAge(birthDateObj: Date) {
+//   const currentDate = new Date();
+//   let age = currentDate.getFullYear() - birthDateObj.getFullYear();
+
+//   birthDateObj.setFullYear(currentDate.getFullYear());
+//   if (birthDateObj > currentDate) age--;
+
+//   return `${age} years old`;
+// }
+
+// function calculateExperience(startDateObj: Date) {
+//   const currentDate = new Date();
+
+//   const diffTime = Math.abs(currentDate.valueOf() - startDateObj.valueOf());
+//   const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365));
+//   const diffMonths = Math.floor((diffTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.436875));
+
+//   return `${diffYears} years` + (diffMonths ? ` and ${diffMonths} months` : '');
+// }
+
 export class About extends React.Component {
   render() {
     return (
@@ -23,7 +44,6 @@ export class About extends React.Component {
             <Row>
               <Col md={12}>
                 <div className="text-center mb-3">
-                  {/* <img src={about.avatar} alt="kiendang" style={{ width: '150px' }} /> https://www.npmjs.com/package/copy-webpack-plugin */}
                   <img
                     src="/images/whatsapp2.jpg"
                     alt="Abdullah"
@@ -45,6 +65,26 @@ export class About extends React.Component {
               <Row>
                 <Col md={9} style={{ display: 'inline-grid', alignContent: 'space-between' }}>
                   <div dangerouslySetInnerHTML={{ __html: about.objective }} />
+                  {/* <Row>
+                    <Col md={6} sm={12}>
+                      <div className="mb-3">
+                        <strong>Email: </strong>
+                        {email}
+                      </div>
+                    </Col>
+                    <Col md={6} sm={12}>
+                      <div className="mb-3">
+                        <strong>Experience: </strong>
+                        {calculateExperience(about.experienceSince)}
+                      </div>
+                    </Col>
+                    <Col md={12} sm={12}>
+                      <div className="mb-3">
+                        <strong>Soft Skills: </strong>
+                        {about.softSkills.join(', ')}
+                      </div>
+                    </Col>
+                  </Row> */}
                   <div className="mt-3 mb-3">
                     <a href={about.resumeUrl} className="btn btn-kd" target="_blank" rel="noopener noreferrer">
                       View my CV
