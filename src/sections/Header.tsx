@@ -18,62 +18,60 @@ const Dot = styled.span({
   display: 'inline',
 });
 
-export class Header extends React.Component {
-  render() {
-    return (
-      <header className="kd-header fixed-top">
-        <Navbar expand="lg" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home" className="nav-logo">
-              <Logo>
-                {details.firstName}
-                <Dot>{details.middleName}</Dot>
-                {details.lastName}
-              </Logo>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarNavDropdown" />
-            <Navbar.Collapse id="navbarNavDropdown">
-              <Nav className="ms-auto" as="ul">
-                <Nav.Item as="li">
-                  <Scroller href="#home" className="nav-link">
-                    Home
-                  </Scroller>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Scroller href="#about" className="nav-link">
-                    About
-                  </Scroller>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Scroller href="#education" className="nav-link">
-                    Education &amp; Experience
-                  </Scroller>
-                </Nav.Item>
-                {/* <Nav.Item as="li">
+function Header() {
+  return (
+    <header className="kd-header fixed-top">
+      <Navbar expand="lg" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home" className="nav-logo">
+            <Logo>
+              {details.firstName}
+              <Dot>{details.middleName}</Dot>
+              {details.lastName}
+            </Logo>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarNavDropdown" />
+          <Navbar.Collapse id="navbarNavDropdown">
+            <Nav className="ms-auto" as="ul">
+              <Nav.Item as="li">
+                <Scroller href="#home" className="nav-link">
+                  Home
+                </Scroller>
+              </Nav.Item>
+              <Nav.Item as="li">
+                <Scroller href="#about" className="nav-link">
+                  About
+                </Scroller>
+              </Nav.Item>
+              <Nav.Item as="li">
+                <Scroller href="#education" className="nav-link">
+                  Education &amp; Experience
+                </Scroller>
+              </Nav.Item>
+              {/* <Nav.Item as="li">
                   <Scroller href="#recommendations" className="nav-link">Recommendations</Scroller>
                 </Nav.Item> */}
-                <Nav.Item as="li">
-                  <Scroller href="#skills" className="nav-link">
-                    Skills
-                  </Scroller>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Scroller href="#projects" className="nav-link">
-                    Projects
-                  </Scroller>
-                </Nav.Item>
-                <Nav.Item as="li">
-                  <Scroller href="#contact" className="nav-link">
-                    Contact
-                  </Scroller>
-                </Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </header>
-    );
-  }
+              <Nav.Item as="li">
+                <Scroller href="#skills" className="nav-link">
+                  Skills
+                </Scroller>
+              </Nav.Item>
+              <Nav.Item as="li">
+                <Scroller href="#projects" className="nav-link">
+                  Projects
+                </Scroller>
+              </Nav.Item>
+              <Nav.Item as="li">
+                <Scroller href="#contact" className="nav-link">
+                  Contact
+                </Scroller>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  );
 }
 
 export default Header;

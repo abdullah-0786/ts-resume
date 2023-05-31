@@ -12,37 +12,33 @@ interface Props {
   children: React.ReactNode;
 }
 
-export class Timeline extends React.Component<Props> {
-  render() {
-    const props = this.props;
+function Timeline({ time, title, icon, left, children }: Props) {
+  const IconBox = styled.div({
+    background: '#fff',
+    fontSize: '24px',
+    // color: '#ff4c60',
+    color: '#006B38FF',
+    position: 'absolute',
+    left: left ?? '-10px',
+    top: 0,
+    zIndex: 1,
+    fontWeight: 900,
+  });
 
-    const IconBox = styled.div({
-      background: '#fff',
-      fontSize: '24px',
-      // color: '#ff4c60',
-      color: '#006B38FF',
-      position: 'absolute',
-      left: this.props.left ? this.props.left : '-10px',
-      top: 0,
-      zIndex: 1,
-      fontWeight: 900,
-    });
-
-    return (
-      <div className="timeline-container">
-        <Fade bottom>
-          <div className="content">
-            <span className="time">{this.props.time}</span>
-            <h3 className="title">{this.props.title}</h3>
-            {this.props.children}
-          </div>
-        </Fade>
-        <IconBox>
-          <FontAwesomeIcon icon={props.icon} />
-        </IconBox>
-      </div>
-    );
-  }
+  return (
+    <div className="timeline-container">
+      <Fade bottom>
+        <div className="content">
+          <span className="time">{time}</span>
+          <h3 className="title">{title}</h3>
+          {children}
+        </div>
+      </Fade>
+      <IconBox>
+        <FontAwesomeIcon icon={icon} />
+      </IconBox>
+    </div>
+  );
 }
 
 export default Timeline;

@@ -4,27 +4,25 @@ import knowledge from '../data/knowledge';
 
 const tools = knowledge.tools;
 
-export class Tools extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Row>
-          {tools.map((t, index) => (
-            <React.Fragment key={t.name}>
-              {index % 4 === 0 && <div className="w-100 d-none d-md-block" />}
-              <Col md={3} xs={6}>
-                <div className="knowledge">
-                  <div className="item">
-                    <img src={t.image} alt={t.name} className="image" />
-                  </div>
+function Tools() {
+  return (
+    <Container>
+      <Row>
+        {tools.map((t, index) => (
+          <React.Fragment key={t.name}>
+            {index % 4 === 0 && <div className="w-100 d-none d-md-block" />}
+            <Col md={3} xs={6}>
+              <div className="knowledge">
+                <div className="item">
+                  <img src={t.image} alt={t.name} className="image" />
                 </div>
-              </Col>
-            </React.Fragment>
-          ))}
-        </Row>
-      </Container>
-    );
-  }
+              </div>
+            </Col>
+          </React.Fragment>
+        ))}
+      </Row>
+    </Container>
+  );
 }
 
 export default Tools;
