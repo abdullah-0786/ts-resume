@@ -1,7 +1,8 @@
 const about = {
   username: 'Syed Abdullah Faisal',
   contact: '+923242172402',
-  avatar: '../assets/images/avatar-primary-bg.svg',
+  // avatar: '"/images/whatsapp2.jpg"',
+  avatar: '',
   objective:
     '<p>I am a dedicated and enthusiastic programmer who thrives on acquiring new skills and tackling diverse programming challenges. My dedication lies in delivering professional and efficient solutions that meet client requirements. With experience in web development, I have successfully designed, developed, and deployed web applications tailored to various industry domains.</p><p>My exceptional analytical and problem-solving abilities enable me to confidently execute software tasks from start to completion. I am excited to continue using my expertise and experience to craft innovative solutions for clients within the software engineering industry.</p>',
   resumeUrl: 'https://drive.google.com/file/d/1XDEMxbNaEqMBptSmHIY5sW0RH2yzEv2k/view',

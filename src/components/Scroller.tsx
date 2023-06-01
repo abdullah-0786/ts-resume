@@ -1,48 +1,47 @@
-import React from 'react'
-import * as smoothScroll from 'smoothscroll-polyfill'
+import React, { useEffect } from 'react';
+import * as defaultSmoothScroll from 'smoothscroll-polyfill';
 
 interface Props {
-  offset?: number
+  onClick?: (arg: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => unknown;
+  children?: React.ReactNode;
+  offset?: number;
+  [key: string]: unknown;
 }
 
-export class Scroller extends React.Component<Props & React.AnchorHTMLAttributes<HTMLAnchorElement>> {
-  componentDidMount() {
-    smoothScroll.polyfill()
-  }
+function Scroller({ offset, children, onClick, ...rest }: Props) {
+  useEffect(() => {
+    defaultSmoothScroll.polyfill();
+  }, []);
 
-  smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
 
-    let offset = 0
-    if (this.props.offset) {
-      offset = this.props.offset
+    let offsetValue = 0;
+    if (offset) {
+      offsetValue = offset;
     }
 
-    const id = e.currentTarget.getAttribute('href')?.slice(1)
+    const id = e.currentTarget.getAttribute('href')?.slice(1);
     if (id) {
-      const $anchor = document.getElementById(id)
+      const $anchor = document.getElementById(id);
       if ($anchor) {
-        const offsetTop = $anchor.getBoundingClientRect().top + window.pageYOffset
+        const offsetTop = $anchor.getBoundingClientRect().top + window.pageYOffset;
         window.scroll({
-          top: offsetTop - offset,
-          behavior: 'smooth'
-        })
+          top: offsetTop - offsetValue,
+          behavior: 'smooth',
+        });
       }
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(e)
+    if (onClick) {
+      onClick(e);
     }
-  }
+  };
 
-  render() {
-    const { ...rest } = this.props
-    return(
-      <a {...rest} onClick={this.smoothScroll}>
-        {this.props.children}
-      </a>
-    )
-  }
+  return (
+    <a {...rest} onClick={smoothScroll}>
+      {children}
+    </a>
+  );
 }
-
-export default Scroller
+export default Scroller;

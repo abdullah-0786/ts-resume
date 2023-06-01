@@ -49,7 +49,7 @@ function About() {
                   alt="Abdullah"
                   style={{ boxShadow: '0px 5px 20px 0px rgba(69,67,96,0.1)', width: '75%', borderRadius: '20%' }}
                 /> */}
-                <Img src="/images/whatsapp2.jpg" alt="Abdullah" />
+                <Img src={about.avatar} alt="Abdullah" />
               </div>
             </Col>
             <Col md={12}>

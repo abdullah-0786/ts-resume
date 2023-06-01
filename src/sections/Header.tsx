@@ -21,7 +21,7 @@ const Dot = styled.span({
 function Header() {
   return (
     <header className="kd-header fixed-top">
-      <Navbar expand="lg" variant="dark">
+      <Navbar id="navbar" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home" className="nav-logo">
             <Logo>
