@@ -3,6 +3,7 @@ import { Scroller } from '../components';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 import details from '../data/details';
+import { NavbarVisibilityContextProps, useNavbarVisibility } from '../contexts';
 
 const Logo = styled.span({
   color: '#fff',
@@ -19,8 +20,17 @@ const Dot = styled.span({
 });
 
 function Header() {
+  const { navbarVisibility } = useNavbarVisibility() as NavbarVisibilityContextProps;
+
   return (
-    <header className="kd-header fixed-top">
+    <header
+      className="kd-header fixed-top"
+      style={{
+        opacity: navbarVisibility ? '1' : '0',
+        transition: 'all .2s',
+        visibility: navbarVisibility ? 'visible' : 'hidden',
+      }}
+    >
       <Navbar id="navbar" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home" className="nav-logo">

@@ -2,8 +2,8 @@ const details = {
   firstName: 'Syed ',
   middleName: 'Abdullah ',
   lastName: 'Faisal',
-  // avatar: '/images/whatsapp1.jpg',
-  avatar: '',
+  avatar: '/images/whatsapp1.jpg',
+  // avatar: '',
   titles: ['Software Engineer', 'MERN Stack Developer'],
   socialNetworks: [
     {

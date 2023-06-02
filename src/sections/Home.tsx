@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ParticlesContainer } from '../components';
@@ -7,16 +7,44 @@ import styled from 'styled-components';
 import { Scroller } from '../components';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import details from '../data/details';
-
-const Dot = styled.div({
-  color: '#006B38FF',
-  // color: '#ff4c60',
-  display: 'inline',
-});
+import { NavbarVisibilityContextProps, useNavbarVisibility } from '../contexts';
 
 function Home() {
+  const Dot = styled.div({
+    color: '#006B38FF',
+    // color: '#ff4c60',
+    display: 'inline',
+  });
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { setNavbarVisibility } = useNavbarVisibility() as NavbarVisibilityContextProps;
+
+  useEffect(() => {
+    const options = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px',
+      threshold: 0.5, // 50% visibility threshold
+    };
+
+    const handleIntersection: IntersectionObserverCallback = entries => {
+      entries.forEach(entry => {
+        entry.isIntersecting ? setNavbarVisibility(false) : setNavbarVisibility(true);
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    // Observe each section reference
+    const node = sectionRef.current;
+    if (node) observer.observe(sectionRef.current);
+
+    return () => {
+      if (node) observer.unobserve(node);
+    };
+  });
+
   return (
-    <section id="home" className="home d-flex align-items-center">
+    <section id="home" ref={sectionRef} className="home d-flex align-items-center">
       <div>
         <ParticlesContainer />
       </div>
