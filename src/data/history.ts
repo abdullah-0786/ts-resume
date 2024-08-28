@@ -10,11 +10,20 @@ const history = {
   ],
   career: [
     {
-      id: 1,
-      period: 'Mar 2021 – Present',
-      company: 'Sybrid pvt ltd - A Lakson Group of Company',
+      id: 2,
+      period: 'August 2023 – Present',
+      company: 'KODERLABS',
       title: 'Software Engineer',
-      description: '<p>Designed and developed web applications & managed web servers</p>',
+      description: `Been working as a Backend Developer, my responsibilities include creating server-side applications, including API development, schema design, and real-time communication via socket events.
+      My role also involved deploying and optimizing applications using AWS services, managing server-side applications, optimizing code, and leading the backend team.`,
+    },
+    {
+      id: 1,
+      period: 'Mar 2021 – August 2023',
+      company: 'Concave Ventures',
+      title: 'Software Engineer',
+      description:
+        'As a Full Stack MERN Developer, my contributions were developing web applications, building server-side apps, automating MongoDB backups, optimizing database performance, creating React UI components, and overseeing web application deployments.',
     },
   ],
 };

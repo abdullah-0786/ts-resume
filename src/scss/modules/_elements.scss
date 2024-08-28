@@ -9,7 +9,7 @@ $font-awesome: "Font Awesome 5 Free";
 
   .timeline-container {
     padding-left: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     position: relative;
     background-color: inherit;
     width: 100%;
@@ -29,7 +29,7 @@ $font-awesome: "Font Awesome 5 Free";
 
     h3 {
       font-size: 20px;
-      margin: 10px 0;
+      margin: 5px 0;
     }
 
     p {
@@ -46,6 +46,12 @@ $font-awesome: "Font Awesome 5 Free";
       bottom: 30px;
       left: 34px;
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .timeline .timeline-container {
+    padding-left: 25px;
   }
 }
 
@@ -93,6 +99,10 @@ $font-awesome: "Font Awesome 5 Free";
 
 .padding-30 {
   padding: 30px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
 }
 
 .triangle-left {

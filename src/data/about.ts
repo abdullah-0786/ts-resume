@@ -21,8 +21,8 @@ const about = {
       color: '#6C6CE5',
     },
     {
-      name: 'MongoDB',
-      confidence: 83,
+      name: '.Net',
+      confidence: 40,
       color: '#5C8700',
     },
     {
