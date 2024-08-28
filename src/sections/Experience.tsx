@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Section, Timeline } from '../components';
 import history from '../data/history';
+import ShowMoreText from '../components/ShowMoreText';
 
 const career = history.career;
 
@@ -18,7 +19,7 @@ function Experience() {
                     <i>{c.company}</i>
                   </strong>
                 </p>
-                <div dangerouslySetInnerHTML={{ __html: c.description }} />
+                <ShowMoreText text={c.description} />
               </Timeline>
             ))}
 

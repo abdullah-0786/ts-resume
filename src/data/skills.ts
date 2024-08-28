@@ -11,13 +11,11 @@ function skills(confidence: number): { confidence: number; color: string; theme:
 export default [
   {
     name: 'NodeJs',
-    ...skills(85),
+    ...skills(75),
   },
   {
     name: 'NestJs',
-    // confidence: 70,
-    // color: '#6C6CE5',
-    ...skills(70),
+    ...skills(80),
   },
   {
     name: 'React',
@@ -25,19 +23,35 @@ export default [
   },
   {
     name: 'Next',
+    ...skills(40),
+  },
+  {
+    name: 'Micro Services',
     ...skills(50),
   },
   {
-    name: 'MongoDB',
-    ...skills(85),
+    name: 'RabbitMQ',
+    ...skills(30),
   },
   {
-    name: 'Mongo Atlas',
+    name: 'Kafka',
+    ...skills(25),
+  },
+  {
+    name: 'PostgreSql',
+    ...skills(70),
+  },
+  {
+    name: 'MongoDB',
     ...skills(80),
   },
   {
     name: 'MySql',
-    ...skills(80),
+    ...skills(70),
+  },
+  {
+    name: 'Mongo Atlas',
+    ...skills(75),
   },
   {
     name: 'SSMS',
@@ -72,27 +86,51 @@ export default [
   //   ...skills(40),
   // },
   {
-    name: 'Firebase',
-    ...skills(60),
-  },
-  {
-    name: 'Heroku',
-    ...skills(50),
-  },
-  {
-    name: 'Azure DevOps',
-    ...skills(70),
-  },
-  {
-    name: 'Git',
+    name: 'Prisma',
     ...skills(75),
   },
   {
+    name: 'Mongoose',
+    ...skills(70),
+  },
+  {
+    name: 'TypeORM',
+    ...skills(40),
+  },
+  {
+    name: 'Sequelize',
+    ...skills(40),
+  },
+  {
+    name: 'Firebase',
+    ...skills(50),
+  },
+  {
+    name: 'AWS',
+    ...skills(40),
+  },
+  {
+    name: 'Azure DevOps',
+    ...skills(30),
+  },
+  {
+    name: 'Git',
+    ...skills(65),
+  },
+  {
     name: 'Postman',
-    ...skills(80),
+    ...skills(70),
   },
   {
     name: 'Keycloak',
     ...skills(40),
+  },
+  {
+    name: '.Net Core',
+    ...skills(30),
+  },
+  {
+    name: 'Entity Framework',
+    ...skills(25),
   },
 ];

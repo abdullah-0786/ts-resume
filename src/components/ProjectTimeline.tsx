@@ -32,7 +32,7 @@ function ProjectTimeline(props: Props) {
       <Fade bottom>
         <div className="content">
           <TitleDiv>
-            <span className="time">{props?.time}</span>
+            {/* <span className="time">{props?.time}</span> */}
             <h3 className="title" style={{ marginBlockEnd: 0 }}>
               {props.title}
             </h3>
