@@ -1,0 +1,53 @@
+# Deploys the site to Firebase Hosting whenever changes land on `master`
+# (i.e. when a PR is merged into master).
+#
+# SETUP (one-time):
+#   1. Generate a Firebase service account key:
+#        Firebase Console -> Project Settings -> Service accounts
+#        -> "Generate new private key"  (downloads a JSON file)
+#   2. In the GitHub repo: Settings -> Secrets and variables -> Actions
+#        -> New repository secret
+#        Name:  FIREBASE_SERVICE_ACCOUNT
+#        Value: paste the entire contents of that JSON file
+#   3. Commit this file to: .github/workflows/firebase-deploy.yml
+
+name: Deploy to Firebase Hosting (master)
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: {}   # allows manual runs from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Enable Corepack (Yarn Berry)
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build
+        run: yarn build   # webpack -> outputs to ./build
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: abdullah-resume
