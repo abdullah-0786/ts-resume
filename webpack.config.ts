@@ -45,6 +45,12 @@ const config: webpack.Configuration = {
           },
           {
             loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                quietDeps: true,
+                silenceDeprecations: ['import', 'global-builtin', 'legacy-js-api', 'color-functions'],
+              },
+            },
           },
         ],
       },
