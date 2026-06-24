@@ -4,7 +4,7 @@ const details = {
   lastName: 'Faisal',
   avatar: '/images/whatsapp1.jpg',
   // avatar: '',
-  titles: ['Software Engineer', 'MERN Stack Developer'],
+  titles: ['Senior Software Engineer', 'Full-Stack Developer'],
   socialNetworks: [
     {
       name: 'Github',
