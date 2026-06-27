@@ -29,6 +29,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Compile the CV from LaTeX source (cv/cv.tex) into public/cv.pdf.
+      # If your template needs XeLaTeX/LuaLaTeX, add latexmk_use_xelatex: true
+      # (or latexmk_use_lualatex: true) below. See cv/README.md.
+      - name: Compile CV (LaTeX)
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: cv
+          root_file: cv.tex
+        # Produces cv/cv.pdf. The `yarn build` prebuild step (scripts/build-cv.js)
+        # copies it into public/cv.pdf — no LaTeX needed on the Node runner.
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

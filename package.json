@@ -37,6 +37,7 @@
   },
   "scripts": {
     "start": "webpack serve --open",
+    "prebuild": "node scripts/build-cv.js",
     "build": "webpack --config webpack.config.ts",
     "dev": "webpack serve --static ./build --hot --port 3000 --open"
   },

@@ -1,0 +1,188 @@
+% ---------------------------------------------------------------------------
+% This is the SINGLE SOURCE OF TRUTH for your CV PDF.
+%
+% Edit this file (or paste your Overleaf source over it), push to `master`,
+% and the GitHub Action will compile it to public/cv.pdf and deploy it.
+% The "View my CV" button on the site links to /cv.pdf.
+%
+% To bring your CV over from Overleaf:
+%   Overleaf -> Menu -> Source / or select-all in the editor -> copy
+%   -> paste over the body below (keep it compilable with pdflatex,
+%      or switch the engine in .github/workflows/firebase-deploy.yml).
+% ---------------------------------------------------------------------------
+
+
+%-------------------------
+% ATS-friendly resume, single-column
+% Based on Rezume (MIT) by Nanu Panchamurthy
+%-------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{titlesec}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{latexsym}
+\usepackage{marvosym}
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[english]{babel}
+\usepackage{needspace}
+
+\input glyphtounicode
+\pdfgentounicode=1   % ensures generated PDF is ATS/Unicode readable
+
+%---------- FONT: Helvetica (clean, ATS-safe) ----------
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\urlstyle{same}
+
+%---------- MARGINS ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0in}
+\renewcommand{\footrulewidth}{0in}
+\setlength{\tabcolsep}{0in}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\textheight}{1.35in}
+\raggedbottom{}
+\raggedright{}
+
+%---------- SECTION STYLE ----------
+\titleformat{\section}
+  {\scshape\large}{}
+  {0em}{\color{blue}}[\color{black}\titlerule\vspace{2pt}]
+\titlespacing*{\section}{0pt}{3pt}{2pt}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+
+%---------- CUSTOM COMMANDS ----------
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, rightmargin=0.11in, itemsep=1pt, topsep=2pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.16\linewidth}p{0.02\linewidth}p{0.82\linewidth}
+  }
+    \textbf{#1} & #2 & #3
+  \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+  \needspace{3.5\baselineskip}
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}, topsep=2pt, itemsep=0pt]}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+
+%__________________ RESUME __________________
+\begin{document}
+
+%----------- HEADER (linear, ATS-safe) -----------
+\begin{center}
+  {\Huge \textbf{Syed Abdullah Faisal}} \\ \vspace{4pt}
+  \small
+  Karachi, Pakistan $|$
+  \href{tel:+923242172402}{+92 324 2172402} $|$
+  \href{mailto:syedabdullah.faisal1998@gmail.com}{\underline{syedabdullah.faisal1998@gmail.com}} \\ \vspace{2pt}
+  \href{https://www.linkedin.com/in/syed-abdullah-faisal-647b59202/}{\underline{LinkedIn}} $|$
+  \href{https://github.com/abdullah-0786}{\underline{GitHub}} $|$
+  \href{https://abdullah-resume.web.app/}{\underline{Portfolio}}
+\end{center}
+\vspace{4pt}
+
+%----------- SUMMARY -----------
+\section{Summary}
+\small{
+Full-Stack Software Engineer with 5+ years building and scaling web applications and backend services in the JavaScript/TypeScript ecosystem. Strong in NestJS, Node.js, and React with deep PostgreSQL, data engineering, and AWS experience; proven at leading backend teams and migrating production databases.
+}
+\vspace{2pt}
+
+%----------- TECHNICAL SKILLS -----------
+\section{Technical Skills}
+\resumeHeadingListStart{}
+  \resumeSectionType{Languages}{:}{JavaScript, TypeScript, SQL, PHP}
+  \resumeSectionType{Backend}{:}{NestJS, Node.js, Express.js, REST APIs, GraphQL, WebSockets, Microservices, RabbitMQ, Kafka, Redis, Prisma, TypeORM, Sequelize, Mongoose, Swagger, Keycloak}
+  \resumeSectionType{Frontend}{:}{React, Next.js, Redux, React Router}
+  \resumeSectionType{Databases}{:}{PostgreSQL, MySQL, MongoDB, SQL Server}
+  \resumeSectionType{Cloud \& \mbox{DevOps}}{:}{AWS (EC2, S3, Elastic Beanstalk, Lambda, CloudWatch, ElastiCache, RDS, CloudFront), Azure (\mbox{DevOps}, Functions, Blob Storage), Docker}
+  \resumeSectionType{Data \& BI}{:}{Snowflake, Holistics, SQL Query Optimization}
+  \resumeSectionType{Tools}{:}{Git, Postman, DBeaver, Sentry, Firebase, VS Code}
+\resumeHeadingListEnd{}
+
+%----------- EXPERIENCE -----------
+\section{Experience}
+\resumeHeadingListStart{}
+  \resumeQuadHeading{Senior Software Engineer}{Aug 2023 -- Present}
+  {Koderlabs}{Onsite -- Karachi, Pakistan}
+  \resumeItemListStart{}
+    \resumeItem{Design and maintain backend services and REST APIs in \textbf{NestJS} and \textbf{TypeScript} with \textbf{Prisma} over \textbf{PostgreSQL} for Spruce, a property-management and home-services platform.}
+    \resumeItem{Refactored a high-volume booking-generation process to handle 5,000-record runs in 500-row transactional chunks, removing an O(n\textsuperscript{2}) lookup and reducing database connection-pool pressure.}
+    \resumeItem{Recovered and migrated production \textbf{PostgreSQL} databases from custom-format binary dumps using \textbf{pg\_restore}, including per-table recovery of a partially truncated archive spanning 30+ tables.}
+    \resumeItem{Ported 15+ analytics reports from \textbf{Snowflake} to \textbf{PostgreSQL} in \textbf{Holistics} BI, resolving join fan-out with \texttt{DISTINCT ON} and pre-aggregated CTEs for accurate metrics.}
+    \resumeItem{Deployed and operated applications on \textbf{AWS} (Elastic Beanstalk, Lambda, RDS, S3, CloudWatch), upgrading Lambda Node.js runtimes and defining an RDS snapshot and backup strategy.}
+    \resumeItem{Led the backend team, managing tasks, reviewing code, and enforcing development best practices; implemented real-time features using \textbf{socket events}.}
+  \resumeItemListEnd{}
+
+  \resumeQuadHeading{Software Engineer}{Mar 2021 -- Aug 2023}
+  {Concave Ventures}{Onsite -- Karachi, Pakistan}
+  \resumeItemListStart{}
+    \resumeItem{Built and shipped full-stack web applications across agritech, e-commerce, and CRM domains on the \textbf{MERN} and \textbf{.NET} stacks, owning back-end APIs, database design, and front-end UI.}
+    \resumeItem{Designed REST APIs with \textbf{Keycloak}/JWT auth and \textbf{Swagger} docs; built reporting with \textbf{Mongoose} pipelines and SQL stored procedures; integrated payment/courier services and serverless jobs (\textbf{Azure} Functions, \textbf{Node-cron}).}
+  \resumeItemListEnd{}
+\resumeHeadingListEnd{}
+
+%----------- PROJECTS -----------
+
+\section{Projects}
+\resumeHeadingListStart{}
+  \resumeProjectHeading{Spruce}{NestJS, Prisma, PostgreSQL, AWS, Holistics, Snowflake}
+  \resumeItemListStart{}
+    \resumeItem{Property-management and home-services platform. Integrated \textbf{Braze} for emails and notifications, \textbf{AWS} trigger functions for image-thumbnail generation, and cron jobs for payment settlements before booking dates.}
+  \resumeItemListEnd{}
+  \resumeProjectHeading{RxPak}{NestJS, Prisma, PostgreSQL, AWS}
+  \resumeItemListStart{}
+    \resumeItem{E-commerce platform for medical products. Single-handedly built the backend with \textbf{NestJS}, \textbf{Prisma}, and \textbf{PostgreSQL}; integrated \textbf{PowerTranz} payment processing and \textbf{AWS} serverless functions for delivery-status updates and low-stock refill reminders.}
+  \resumeItemListEnd{}
+  \resumeProjectHeading{Kisaan Madadgar}{TypeScript, NestJS, React, MongoDB, Azure}
+  \resumeItemListStart{}
+    \resumeItem{Agritech platform helping farmers make informed crop and livestock decisions. Built the back-end and database with \textbf{NestJS} and \textbf{Mongoose}; implemented \textbf{Keycloak} authentication, Mongoose aggregation pipelines with \textbf{Swagger} docs, \textbf{Node-cron} with \textbf{Firebase} notifications, and \textbf{Azure} Functions for serverless tasks.}
+  \resumeItemListEnd{}
+\resumeHeadingListEnd{}
+
+%----------- EDUCATION -----------
+\section{Education}
+\resumeHeadingListStart{}
+  \resumeQuadHeading{Master of Science in Data Science}{In Progress}
+  {NED University, Karachi}{CGPA: 3.34}
+  \resumeQuadHeading{Bachelor of Science in Computer Science}{2017 -- 2021}
+  {Iqra University, Karachi}{CGPA: 3.55}
+\resumeHeadingListEnd{}
+
+%----------- ACHIEVEMENTS -----------
+\section{Achievements}
+\resumeItemListStart{}
+  \resumeItem{Certificate of Recognition: \textbf{Koderlabs} (2024) and \textbf{Concave Ventures} (2022).}
+\resumeItemListEnd{}
+
+\end{document}

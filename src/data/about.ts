@@ -5,7 +5,7 @@ const about = {
   // avatar: '',
   objective:
     '<p>Full-Stack Software Engineer with 5+ years building and scaling web applications and backend services in the JavaScript/TypeScript ecosystem. Strong in NestJS, Node.js, and React with deep PostgreSQL, data engineering, and AWS experience.</p><p>Proven at leading backend teams, recovering and migrating production databases, and porting BI reporting pipelines.</p>',
-  resumeUrl: 'https://drive.google.com/file/d/1BCOAYlsk6p-WiqdxTqAurDypQxsoxKfx/view',
+  resumeUrl: '/cv.pdf',
   experienceSince: new Date('2021-03-01'),
   dob: new Date('1998-12-27'),
   softSkills: ['Eager to learn new technologies', 'Team player', 'Adaptability', 'Multitasking', 'Strong analytical and problem-solving skills'],

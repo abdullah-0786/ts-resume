@@ -11,6 +11,15 @@
 # production
 /build
 
+# generated CV PDF (compiled in CI from cv/cv.tex) + LaTeX aux files
+/public/cv.pdf
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.fls
+cv/*.fdb_latexmk
+cv/*.synctex.gz
+
 # misc
 .DS_Store
 .env.local
