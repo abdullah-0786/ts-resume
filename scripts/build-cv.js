@@ -19,29 +19,69 @@ const root = path.resolve(__dirname, '..');
 const cvDir = path.join(root, 'cv');
 const srcPdf = path.join(cvDir, 'cv.pdf');
 const outPdf = path.join(root, 'public', 'cv.pdf');
+const isWin = process.platform === 'win32';
+const exe = (name) => (isWin ? `${name}.exe` : name);
 
-function has(cmd) {
-  const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore', shell: process.platform === 'win32' });
-  return probe.status === 0;
+// Extra dirs to search when the engine isn't on PATH (e.g. MiKTeX installed but
+// the terminal wasn't restarted). Covers per-user + machine-wide MiKTeX and TeX Live.
+function extraBinDirs() {
+  if (!isWin) return ['/usr/local/texlive', '/Library/TeX/texbin', '/usr/bin'];
+  const { LOCALAPPDATA, APPDATA, ProgramFiles, SystemDrive } = process.env;
+  const dirs = [
+    LOCALAPPDATA && path.join(LOCALAPPDATA, 'Programs', 'MiKTeX', 'miktex', 'bin', 'x64'),
+    APPDATA && path.join(APPDATA, 'MiKTeX', 'miktex', 'bin', 'x64'),
+    ProgramFiles && path.join(ProgramFiles, 'MiKTeX', 'miktex', 'bin', 'x64'),
+  ].filter(Boolean);
+  // TeX Live: C:\texlive\<year>\bin\windows
+  const tlRoot = path.join(SystemDrive || 'C:', '\\texlive');
+  if (fs.existsSync(tlRoot)) {
+    for (const year of fs.readdirSync(tlRoot)) {
+      dirs.push(path.join(tlRoot, year, 'bin', 'windows'), path.join(tlRoot, year, 'bin', 'win32'));
+    }
+  }
+  return dirs;
+}
+
+// Resolve an engine to a runnable command: bare name if on PATH, else a full
+// path from a known install dir, else null.
+function resolve(name) {
+  const onPath = spawnSync(name, ['--version'], { stdio: 'ignore', shell: isWin });
+  if (onPath.status === 0) return name;
+  for (const dir of extraBinDirs()) {
+    const full = path.join(dir, exe(name));
+    if (fs.existsSync(full)) return full;
+  }
+  return null;
 }
 
 function run(cmd, args) {
-  console.log(`[cv] ${cmd} ${args.join(' ')}`);
-  const res = spawnSync(cmd, args, { cwd: cvDir, stdio: 'inherit', shell: process.platform === 'win32' });
+  console.log(`[cv] ${path.basename(cmd)} ${args.join(' ')}`);
+  // shell:false here so a full path with spaces (e.g. "Abdullah Faisal") is safe.
+  const res = spawnSync(cmd, args, { cwd: cvDir, stdio: 'inherit' });
   return res.status === 0;
 }
 
+const latexmk = resolve('latexmk');
+const pdflatex = resolve('pdflatex');
+
 let compiled = false;
-if (has('latexmk')) {
+if (latexmk) {
   // latexmk handles the multiple passes needed for fancyhdr/tabular layouts.
-  compiled = run('latexmk', ['-pdf', '-interaction=nonstopmode', '-halt-on-error', 'cv.tex']);
-} else if (has('pdflatex')) {
+  compiled = run(latexmk, ['-pdf', '-interaction=nonstopmode', '-halt-on-error', 'cv.tex']);
+  if (!compiled) {
+    // MiKTeX ships latexmk as a Perl script but bundles no Perl, so it can fail
+    // with "could not find the script engine 'perl'". Fall back to pdflatex.
+    console.warn('[cv] latexmk failed (commonly missing Perl on MiKTeX); falling back to pdflatex.');
+  }
+}
+if (!compiled && pdflatex) {
   // Two passes so page geometry / references settle.
-  compiled = run('pdflatex', ['-interaction=nonstopmode', '-halt-on-error', 'cv.tex']) &&
-             run('pdflatex', ['-interaction=nonstopmode', '-halt-on-error', 'cv.tex']);
-} else {
+  compiled = run(pdflatex, ['-interaction=nonstopmode', '-halt-on-error', 'cv.tex']) &&
+             run(pdflatex, ['-interaction=nonstopmode', '-halt-on-error', 'cv.tex']);
+}
+if (!latexmk && !pdflatex) {
   console.warn('[cv] No LaTeX engine found (latexmk/pdflatex). Skipping compile.');
-  console.warn('[cv] Install a LaTeX distribution (e.g. MiKTeX) to build the CV locally.');
+  console.warn('[cv] Install a LaTeX distribution (e.g. MiKTeX), then restart your terminal.');
 }
 
 if (compiled && !fs.existsSync(srcPdf)) {
