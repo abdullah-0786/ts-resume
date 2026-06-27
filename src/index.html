@@ -23,6 +23,19 @@
   <link rel="manifest" href="manifest.json" />
   <title>Abdullah resume</title>
 
+  <!-- Apply the saved/system theme before first paint to avoid a flash of the wrong theme. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";

@@ -2,13 +2,13 @@ import React from 'react';
 import { Header, Home, Footer, About, Education, Experience, Contact, Skills, Projects } from '../sections';
 import { Row, Col, Container } from 'react-bootstrap';
 import ScrollTopArrow from './ScrollTopArrow';
-import { NavbarVisibilityProvider } from '../contexts';
+import { NavbarVisibilityProvider, ThemeProvider } from '../contexts';
 
 import '../components/Icons';
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <NavbarVisibilityProvider>
         <Header />
         <main>
@@ -34,7 +34,7 @@ function App() {
       </NavbarVisibilityProvider>
       <Footer />
       <ScrollTopArrow />
-    </>
+    </ThemeProvider>
   );
 }
 

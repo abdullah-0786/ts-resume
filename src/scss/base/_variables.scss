@@ -8,15 +8,16 @@ $font-size-x-large: 24px;
 $font-size-xx-large: 28px;
 $font-size-largest: 36px;
 
-$font-color: #5e5c7f;
+// Body text + page background are theme-aware (see _themes.scss).
+$font-color: var(--text);
 
 $font-bold: 700;
 
 // COLORS
-$color-light: #f9f9f9;
+$color-light: var(--bg); // page background (theme-aware)
 // $color-dark: #342054;
-$color-dark: #333;
-$color-white: #fff;
+$color-dark: #333; // kept literal: neutral dark (e.g. skill-bar fill)
+$color-white: #fff; // kept literal: white text on the accent / colored bars
 $color-active: #ffd15c;
-$color-primary: #006B38FF;
+$color-primary: var(--accent); // theme-aware accent (links, buttons, dots)
 // $color-primary: #ff4c60;

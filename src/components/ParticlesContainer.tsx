@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Particles, { ParticlesProps } from 'react-tsparticles';
 import type { Engine } from 'tsparticles-engine';
 import { loadSlim } from 'tsparticles-slim';
+import { ThemeContextProps, useTheme } from '../contexts';
 
 const particleStyle = {
   position: 'absolute',
@@ -12,6 +13,11 @@ const particleStyle = {
 
 // const particleColors = ['#006B38FF', '#FFF'];
 function ParticlesContainer() {
+  const { theme } = useTheme() as ThemeContextProps;
+  const isDark = theme === 'dark';
+  const bgColor = isDark ? '#0d1320' : '#eef1f5';
+  const accent = isDark ? '#1ca25e' : '#006b38';
+
   const customInit = async (engine: Engine) => {
     await loadSlim(engine);
   };
@@ -23,7 +29,7 @@ function ParticlesContainer() {
   }, []);
 
   const particlesOptions: ParticlesProps['options'] = {
-    background: { color: '#101820FF' },
+    background: { color: bgColor },
     fullScreen: false,
     fpsLimit: 60,
     interactivity: {
@@ -51,10 +57,10 @@ function ParticlesContainer() {
     },
     particles: {
       color: {
-        value: '#006B38FF',
+        value: accent,
       },
       links: {
-        color: '#006B38FF',
+        color: accent,
         distance: 150,
         enable: true,
         opacity: 0.5,
@@ -96,7 +102,8 @@ function ParticlesContainer() {
 
   return (
     <>
-      <Particles style={particleStyle} init={customInit} id="tsparticles" options={particlesOptions} />
+      {/* key={theme} forces a re-init so the background/particle colors update on toggle */}
+      <Particles key={theme} style={particleStyle} init={customInit} id="tsparticles" options={particlesOptions} />
     </>
   );
 }

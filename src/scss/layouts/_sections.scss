@@ -7,10 +7,11 @@ section {
   position: relative;
 
   &.home {
-    background: $color-dark;
+    background: var(--hero-bg);
     padding: 0;
     height: 100vh;
     min-height: 100vh;
+    transition: background-color 0.3s ease;
 
     .intro {
       margin: auto;
@@ -20,12 +21,12 @@ section {
       z-index: 1;
 
       h1 {
-        color: $color-white;
+        color: var(--hero-text);
         font-size: $font-size-largest;
       }
 
       span {
-        color: $color-white;
+        color: var(--hero-text);
         font-size: $font-size-normal;
       }
     }
@@ -33,7 +34,7 @@ section {
     .social-icons {
       li {
         a {
-          color: $color-white;
+          color: var(--hero-text);
         }
       }
     }

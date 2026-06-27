@@ -1,0 +1,67 @@
+/*=================================================================*/
+/*                      THEMES (light / dark)
+/*=================================================================*/
+/*
+  Theme colors are exposed as CSS custom properties so they can switch at
+  runtime via the `data-theme` attribute on <html> (set by ThemeContext).
+  The Sass color variables in _variables.scss reference these, so most of
+  the existing styles become theme-aware with no further changes.
+*/
+
+:root,
+:root[data-theme='light'] {
+  --bg: #f9f9f9; // page background
+  --text: #5e5c7f; // body text
+  --heading: #2c2c3a; // headings (h1–h6)
+  --surface: #ffffff; // cards / "white" surfaces
+  --surface-alt: #eef0f4; // subtle surfaces (progress track, blockquote, code)
+  --border: rgba(0, 0, 0, 0.07); // hairline borders
+  --muted: #8b88b1; // muted text (timeline time, etc.)
+  --fact-icon: #d8d8e6; // stat/fact icon tint
+
+  --accent: #006b38; // primary green (links, buttons, dots)
+  --accent-text: #ffffff; // text on top of the accent
+
+  // Header + hero (adapt per theme)
+  --header-bg: #ffffff;
+  --nav-text: #2c2c3a;
+  --hero-bg: #eef1f5;
+  --hero-text: #2c2c3a;
+  --hero-particle-bg: #eef1f5;
+
+  // Skill / progress bar palette (tuned to read well on light surfaces)
+  --bar-primary: #6c6ce5;
+  --bar-secondary: #b06fc0;
+  --bar-success: #3fa14a;
+  --bar-warning: #e0a416;
+  --bar-error: #e53935;
+  --bar-info: #11a8c7;
+}
+
+:root[data-theme='dark'] {
+  --bg: #14141b;
+  --text: #c5c4d8;
+  --heading: #f4f4fa;
+  --surface: #1e1e2a;
+  --surface-alt: #2a2a38;
+  --border: rgba(255, 255, 255, 0.1);
+  --muted: #a5a2cc;
+  --fact-icon: #3a3a4a;
+
+  --accent: #1ca25e; // brighter green for contrast on dark
+  --accent-text: #ffffff;
+
+  --header-bg: #12121a;
+  --nav-text: #f4f4fa;
+  --hero-bg: #0d1320;
+  --hero-text: #ffffff;
+  --hero-particle-bg: #0d1320;
+
+  // Brighter / more saturated so the bars pop on dark surfaces
+  --bar-primary: #8a8af2;
+  --bar-secondary: #d6a2e0;
+  --bar-success: #5fd97f;
+  --bar-warning: #ffd15c;
+  --bar-error: #ff6b5e;
+  --bar-info: #34d2f2;
+}

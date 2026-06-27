@@ -1,11 +1,13 @@
 type theme = 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
 
+// Colors reference theme-aware CSS variables (see _themes.scss) so the bars
+// adapt to light / dark mode.
 function skills(confidence: number): { confidence: number; color: string; theme: theme } {
-  if (confidence >= 85) return { confidence, color: '#6C6CE5', theme: 'primary' };
-  if (confidence >= 60) return { confidence, color: '#CE93D8', theme: 'secondary' };
-  if (confidence >= 40) return { confidence, color: '#66CC66', theme: 'success' };
-  if (confidence >= 20) return { confidence, color: '#FFD15C', theme: 'warning' };
-  else return { confidence, color: '#f44336', theme: 'error' };
+  if (confidence >= 85) return { confidence, color: 'var(--bar-primary)', theme: 'primary' };
+  if (confidence >= 60) return { confidence, color: 'var(--bar-secondary)', theme: 'secondary' };
+  if (confidence >= 40) return { confidence, color: 'var(--bar-success)', theme: 'success' };
+  if (confidence >= 20) return { confidence, color: 'var(--bar-warning)', theme: 'warning' };
+  else return { confidence, color: 'var(--bar-error)', theme: 'error' };
 }
 
 export default [

@@ -14,10 +14,9 @@ interface Props {
 
 function ProjectTimeline(props: Props) {
   const IconBox = styled.div({
-    background: '#fff',
+    background: 'var(--surface)',
     fontSize: '24px',
-    // color: '#ff4c60',
-    color: '#006B38FF',
+    color: 'var(--accent)',
     position: 'absolute',
     left: props.left ? props.left : '-10px',
     top: 0,

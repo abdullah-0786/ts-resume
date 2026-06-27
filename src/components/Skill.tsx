@@ -18,7 +18,7 @@ function Skill({ title, percent, backgroundColor }: Props) {
     }
   };
 
-  const bgColor = backgroundColor ?? '#f1f1f1';
+  const bgColor = backgroundColor ?? 'var(--surface-alt)';
 
   return (
     <div className="skill-item mb-4">

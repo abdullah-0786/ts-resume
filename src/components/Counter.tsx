@@ -15,7 +15,7 @@ interface Props {
 
 const Box = styled.div({
   float: 'left',
-  color: '#dedeea',
+  color: 'var(--fact-icon)',
   fontSize: '36px',
 });
 

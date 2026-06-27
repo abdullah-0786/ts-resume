@@ -9,26 +9,28 @@ const about = {
   experienceSince: new Date('2021-03-01'),
   dob: new Date('1998-12-27'),
   softSkills: ['Eager to learn new technologies', 'Team player', 'Adaptability', 'Multitasking', 'Strong analytical and problem-solving skills'],
+  // Colors reference theme-aware CSS variables (see _themes.scss) so the bars
+  // adapt to light / dark mode.
   skills: [
     {
       name: 'Javascript',
       confidence: 90,
-      color: '#FFD15C',
+      color: 'var(--bar-warning)',
     },
     {
       name: 'Typescript',
       confidence: 80,
-      color: '#6C6CE5',
+      color: 'var(--bar-primary)',
     },
     {
       name: 'MongoDB',
       confidence: 83,
-      color: '#5C8700',
+      color: 'var(--bar-success)',
     },
     {
       name: 'Python',
       confidence: 40,
-      color: '#0dcaf0',
+      color: 'var(--bar-info)',
     },
   ],
   statistics: [

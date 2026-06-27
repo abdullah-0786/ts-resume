@@ -53,7 +53,7 @@
 }
 
 .mouse-wrapper {
-  color: $color-white;
+  color: var(--hero-text);
   font-size: $font-size-smaller;
   display: block;
   max-width: 100px;
@@ -61,12 +61,12 @@
   text-align: center;
 
   &:hover {
-    color: $color-white;
+    color: var(--hero-text);
   }
 }
 
 .mouse {
-  border: solid 2px $color-white;
+  border: solid 2px var(--hero-text);
   border-radius: 16px;
   display: block;
   margin: auto;
@@ -76,7 +76,7 @@
   width: 20px;
 
   .wheel {
-    background: $color-white;
+    background: var(--hero-text);
     border-radius: 100%;
     display: block;
     position: absolute;

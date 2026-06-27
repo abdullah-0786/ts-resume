@@ -11,8 +11,7 @@ import { NavbarVisibilityContextProps, useNavbarVisibility } from '../contexts';
 
 function Home() {
   const Dot = styled.div({
-    color: '#006B38FF',
-    // color: '#ff4c60',
+    color: 'var(--accent)',
     display: 'inline',
   });
 
